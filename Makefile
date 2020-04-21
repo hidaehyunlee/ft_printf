@@ -6,38 +6,31 @@
 #    By: daelee <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/29 20:23:48 by daelee            #+#    #+#              #
-#    Updated: 2020/04/20 23:23:56 by daelee           ###   ########.fr        #
+#    Updated: 2020/04/21 21:54:03 by daelee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-TEST = ft_printf.out
-SRCS = ft_printf.c \
-       srcs/
-	   libft/
 
-
-
-OBJS =
 CC = gcc
-RM = rm -f
-AR = ar rc
 CFLAGS = -Wall -Wextra -Werror
+AR = ar
+ARFLAGS = rcs
 
+FILES = srcs/
+		libft/
 INCLUDES = includes/
 
-all: ${NAME}
+SRCS = $(addsuffix .c, $(FILES))
+OBJS = $(addsuffix .o, $(FILES))
 
-${NAME}: ${OBJS}
+all: $(NAME)
 
-${OBJS}: ${SRCS} ${INCLUDES}
-	${CC} -c ${SRCS}
-	${AR} ${NAME} ${OBJS}
+.c.o: $(SRCS)
+	$(CC) $(CFLAGS) -c -o $@ $<
 
-
-test:
-	${CC} -g -L. -lftprintf ${SRCS} main.c -o ${TEST}
-
+$(NAME): $(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
 
 clean:
 	rm -rf ${OBJS}
