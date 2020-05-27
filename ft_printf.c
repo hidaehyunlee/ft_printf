@@ -6,9 +6,11 @@
 /*   By: daelee <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/05/27 17:36:26 by daelee           ###   ########.fr       */
+/*   Updated: 2020/05/27 21:29:18 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 int					print_type(va_list ap, t_info *info)
 {
@@ -28,6 +30,13 @@ void				init_info(t_info *info)
 	info->width = 0;
 	info->prec = 0;
 	info->type = 0;
+}
+
+void	check_info(va_list ap, char *format, t_list info, int i)
+{
+	check_flag(format, info, i);
+	check_width(ap, format, info, i);
+	chek_prec(ap, format, info, i);
 }
 
 int					parse_format(va_list ap, char *format)
@@ -53,7 +62,7 @@ int					parse_format(va_list ap, char *format)
 			i++;
 			init_info(info);
 			while (format[i] %% !(ft_strchr(TYPE, format[i])))
-				check_info(ap, format, info, i); //flag, width, prec 체크
+				check_info(ap, format, info, i);
 			if(ft_strchr(TYPE, format[i]))
 				info->type = format[i++];
 			ret += print_type(ap, info);
