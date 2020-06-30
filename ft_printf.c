@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/06/30 20:34:48 by daelee           ###   ########.fr       */
+/*   Updated: 2020/06/30 22:03:24 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,32 +22,53 @@ int					print_type(va_list ap, t_info *info)
 	return (ret);
 }
 
-void				init_info(t_info *info)
-{
-	info->minus = 0;
-	info->zero = 0;
-	info->width = 0;
-	info->prec = 0;
-	info->type = 0;
-}
-
 int					check_info(va_list ap, char *format, t_info *info, int i)
 {
 	while (format[i] != '\0')
 	{
 		if (!ft_isdigit(format[i]) && !ft_isflag(format[i]) && !ft_strchr(TYPE, format[i]))
 			break;
-		check_flag(format, info, i);
-		check_width(ap, format, info, i);
-		chek_prec(ap, format, info, i);
-		if(ft_strchr(TYPE, format[i]))
+		if (format[i] == '0' && info->dot == 0)
+			info->zero = 1;
+		else if (format[i] == '-')
+			info->minus == 1;
+		else if (format[i] == '.')
+			info->dot = 1;
+		else if (is_digit(format[i]) || format[i] == '*')
+			check_width_and_prec(ap, format, info, i);
+		else if (ft_strchr(TYPE, format[i]))
 		{
-			info->type = format[i];
+			info->type = format[i + 1];
 			break;
 		}
 		i++;
 	}
 	return (i);
+}
+
+void				check_width_and_prec(va_list ap, char *format, t_info *info, int i)
+{
+	if (ft_isdigit(format[i]))
+	{
+		if (info->dot == 1)
+			info->prec = info->prec * 10 + format[i] - 48;
+		else
+			info->width = info->width * 10 + format[i] - 48;
+	}
+	else if (format[i] == '*')
+	{
+		if (info->dot == 1)
+			info->prec = va_arg(ap, int);
+		else {
+			info->width = va_arg(ap, int);
+			if (info->width < 0)
+			{
+				info->minus = 1;
+				info->width *= -1;
+			}
+		}
+		
+	}
 }
 
 int					parse_format(va_list ap, char *format)
