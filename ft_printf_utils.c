@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 20:22:47 by daelee            #+#    #+#             */
-/*   Updated: 2020/07/02 12:08:29 by daelee           ###   ########.fr       */
+/*   Updated: 2020/07/02 13:44:44 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,13 @@ int		check_nbr_len_sign(int nbr, t_info *info)
 	i = 0;
 	if (nbr == 0 && info->prec != 0)
 		return (1);
+	if (nbr < 0)
+		info->nbr_sign = -1;
 	while (nbr)
 	{
-		if (nbr < 0)
-			info->nbr_sign = -1;
+		nbr = nbr / 10;
 		i++;
 	}
-		
+	info->nbr_len = i;
 	return (i);
 }

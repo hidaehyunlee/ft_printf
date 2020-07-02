@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:51 by daelee            #+#    #+#             */
-/*   Updated: 2020/07/02 11:49:18 by daelee           ###   ########.fr       */
+/*   Updated: 2020/07/02 13:44:38 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ void			check_width_and_prec(va_list ap, char *format, t_info *info, int i);
 
 void			init_info(t_info *info);
 int				ft_isflag(char c);
-int				nbr_len(int nbr, t_info *info);
+int				check_nbr_len_sign(int nbr, t_info *info);
 
 #endif

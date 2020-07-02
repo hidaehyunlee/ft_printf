@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/07/02 11:08:00 by daelee           ###   ########.fr       */
+/*   Updated: 2020/07/02 13:44:50 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,9 @@ int					parse_format(va_list ap, char *format)
 		{
 			init_info(info);
 			i = check_info(ap, format, info, ++i);
-			printf("m:%d, z:%d, w:%d, d:%d, p:%d, t:%c\n", info->minus, info->zero, info->width, info->dot, info->prec, info->type);
+			//printf("m:%d, z:%d, w:%d, d:%d, p:%d, t:%c\n", info->minus, info->zero, info->width, info->dot, info->prec, info->type);
+			check_nbr_len_sign(va_arg(ap, int), info);
+			printf("nbr len is : %d, nbr sign is : %d\n", info->nbr_len, info->nbr_sign);
 			//printf("return is... : %d\n", ret);
 			//ret += print_type(ap, info);
 		}
@@ -112,7 +114,7 @@ int					ft_printf(const char *format, ...)
 
 int					main(void)
 {
-	//ft_printf("%-03.3d", 12345);
-	printf("%7d",-12345);
+	ft_printf("%-03.3d", -12345);
+	//printf("%7d",-12345);
 	return (0);
 }
