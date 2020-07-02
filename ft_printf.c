@@ -3,24 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daelee <daelee@student.42.fr>              +#+  +:+       +#+        */
+/*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/07/02 13:44:50 by daelee           ###   ########.fr       */
+/*   Updated: 2020/07/02 14:16:24 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// int					print_type(va_list ap, t_info *info)
-// {
-// 	int				ret;
+int					print_type(va_list ap, t_info *info)
+{
+	int				ret;
+	char			type;
 
-// 	ret = 0;
-// 	if (info->type == 'c')
-// 		ret = print_c(ap, info);
-// 	return (ret);
-// }
+	ret = 0;
+	type = info->type;
+	if (type == 'c')
+		ret = print_c(ap, info);
+	// else if (type == 's')
+	// 	ret = print_s(ap, info);
+	// else if (type == 'd' || type == 'i')
+	// 	ret = print_d_i(ap, info);
+	// else if (type == 'x' || type == 'X' || type == 'u')
+	// 	ret = print_x_X_u(ap, info);
+	// else if (type == 'p')
+	// 	ret = print_p(ap, info);
+	return (ret);
+}
 
 int					check_info(va_list ap, char *format, t_info *info, int i)
 {
@@ -90,10 +100,9 @@ int					parse_format(va_list ap, char *format)
 			init_info(info);
 			i = check_info(ap, format, info, ++i);
 			//printf("m:%d, z:%d, w:%d, d:%d, p:%d, t:%c\n", info->minus, info->zero, info->width, info->dot, info->prec, info->type);
-			check_nbr_len_sign(va_arg(ap, int), info);
-			printf("nbr len is : %d, nbr sign is : %d\n", info->nbr_len, info->nbr_sign);
-			//printf("return is... : %d\n", ret);
-			//ret += print_type(ap, info);
+			//check_nbr_len_sign(va_arg(ap, int), info);
+			//printf("nbr len is : %d, nbr sign is : %d\n", info->nbr_len, info->nbr_sign);
+			ret += print_type(ap, info);
 		}
 		i++;
 	}
@@ -112,9 +121,9 @@ int					ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int					main(void)
-{
-	ft_printf("%-03.3d", -12345);
-	//printf("%7d",-12345);
-	return (0);
-}
+// int					main(void)
+// {
+// 	ft_printf("%-03.3d", -12345);
+// 	//printf("%7d",-12345);
+// 	return (0);
+// }
