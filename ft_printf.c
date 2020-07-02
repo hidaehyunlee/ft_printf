@@ -6,21 +6,21 @@
 /*   By: daelee <daelee@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/07/02 09:57:35 by daelee           ###   ########.fr       */
+/*   Updated: 2020/07/02 11:08:00 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int					print_type(va_list ap, t_info *info)
-{
-	int				ret;
+// int					print_type(va_list ap, t_info *info)
+// {
+// 	int				ret;
 
-	ret = 0;
-	if (info->type == 'c')
-		ret = print_c(ap, info);
-	return (ret);
-}
+// 	ret = 0;
+// 	if (info->type == 'c')
+// 		ret = print_c(ap, info);
+// 	return (ret);
+// }
 
 int					check_info(va_list ap, char *format, t_info *info, int i)
 {
@@ -31,14 +31,14 @@ int					check_info(va_list ap, char *format, t_info *info, int i)
 		if (format[i] == '0' && info->dot == 0)
 			info->zero = 1;
 		else if (format[i] == '-')
-			info->minus == 1;
+			info->minus = 1;
 		else if (format[i] == '.')
 			info->dot = 1;
-		else if (is_digit(format[i]) || format[i] == '*')
+		else if (ft_isdigit(format[i]) || format[i] == '*')
 			check_width_and_prec(ap, format, info, i);
 		else if (ft_strchr(TYPE, format[i]))
 		{
-			info->type = format[i + 1];
+			info->type = format[i];
 			break;
 		}
 		i++;
@@ -80,7 +80,7 @@ int					parse_format(va_list ap, char *format)
 	i = 0;
 	ret = 0;
 	if (!(info = malloc(sizeof(t_info) * 1)))
-		return (NULL);
+		return (0);
 	while (format[i] != '\0')
 	{
 		if (format[i] != '%')
@@ -88,8 +88,10 @@ int					parse_format(va_list ap, char *format)
 		else if (format[i] == '%')
 		{
 			init_info(info);
-			i = check_info(ap, format, &info, ++i);
-			ret += print_type(ap, info);
+			i = check_info(ap, format, info, ++i);
+			printf("m:%d, z:%d, w:%d, d:%d, p:%d, t:%c\n", info->minus, info->zero, info->width, info->dot, info->prec, info->type);
+			//printf("return is... : %d\n", ret);
+			//ret += print_type(ap, info);
 		}
 		i++;
 	}
@@ -106,4 +108,11 @@ int					ft_printf(const char *format, ...)
 	ret = parse_format(ap, (char *)format);
 	va_end(ap);
 	return (ret);
+}
+
+int					main(void)
+{
+	//ft_printf("%-03.3d", 12345);
+	printf("%7d",-12345);
+	return (0);
 }
