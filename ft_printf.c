@@ -6,13 +6,13 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/07/02 14:16:24 by daelee           ###   ########.fr       */
+/*   Updated: 2020/07/02 19:43:49 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int					print_type(va_list ap, t_info *info)
+ int				print_type(va_list ap, t_info *info)
 {
 	int				ret;
 	char			type;
@@ -20,7 +20,7 @@ int					print_type(va_list ap, t_info *info)
 	ret = 0;
 	type = info->type;
 	if (type == 'c')
-		ret = print_c(ap, info);
+		ret = print_c(va_arg(ap, int), info);
 	// else if (type == 's')
 	// 	ret = print_s(ap, info);
 	// else if (type == 'd' || type == 'i')
@@ -121,9 +121,10 @@ int					ft_printf(const char *format, ...)
 	return (ret);
 }
 
-// int					main(void)
-// {
-// 	ft_printf("%-03.3d", -12345);
-// 	//printf("%7d",-12345);
-// 	return (0);
-// }
+int					main(void)
+{
+	char c = 'a';
+	int ret = ft_printf("%5c\n", c);
+	printf("%d", ret);
+	return (0);
+}
