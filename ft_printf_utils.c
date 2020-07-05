@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 20:22:47 by daelee            #+#    #+#             */
-/*   Updated: 2020/07/02 19:32:17 by daelee           ###   ########.fr       */
+/*   Updated: 2020/07/05 12:47:01 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ void	init_info(t_info *info)
 	info->type = 0;
 	info->nbr_len = 0;
 	info->nbr_sign = 1;
-}
-
-int		ft_isflag(char c)
-{
-	return ((c == '-') || (c == '0') || (c == '*') || (c == '.'));
 }
 
 int		check_nbr_len_sign(int nbr, t_info *info)

@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/07/02 19:43:49 by daelee           ###   ########.fr       */
+/*   Updated: 2020/07/05 12:46:19 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,20 @@
 	return (ret);
 }
 
-int					check_info(va_list ap, char *format, t_info *info, int i)
+void				check_info(va_list ap, char *format, t_info *info, int i)
 {
-	while (format[i] != '\0')
+	if (format[i] == '0' && info->dot == 0)
+		info->zero = 1;
+	else if (format[i] == '-')
+		info->minus = 1;
+	else if (format[i] == '.')
+		info->dot = 1;
+	else if (ft_isdigit(format[i]) || format[i] == '*')
+		check_width_and_prec(ap, format, info, i);
+	else if (ft_strchr(TYPE, format[i]))
 	{
-		if (!ft_isdigit(format[i]) && !ft_isflag(format[i]) && !ft_strchr(TYPE, format[i]))
-			break;
-		if (format[i] == '0' && info->dot == 0)
-			info->zero = 1;
-		else if (format[i] == '-')
-			info->minus = 1;
-		else if (format[i] == '.')
-			info->dot = 1;
-		else if (ft_isdigit(format[i]) || format[i] == '*')
-			check_width_and_prec(ap, format, info, i);
-		else if (ft_strchr(TYPE, format[i]))
-		{
-			info->type = format[i];
-			break;
-		}
-		i++;
+		info->type = format[i];
 	}
-	return (i);
 }
 
 void				check_width_and_prec(va_list ap, char *format, t_info *info, int i)
@@ -90,21 +82,21 @@ int					parse_format(va_list ap, char *format)
 	i = 0;
 	ret = 0;
 	if (!(info = malloc(sizeof(t_info) * 1)))
-		return (0);
+		return (-1);
 	while (format[i] != '\0')
 	{
-		if (format[i] != '%')
-			ret += ft_putchar(format[i]);
-		else if (format[i] == '%')
+		while (format[i] != '%' && format[i] != '\0')
+			ret += ft_putchar(format[i++]);
+		if (format[i] == '%')
 		{
+			i++;
 			init_info(info);
-			i = check_info(ap, format, info, ++i);
-			//printf("m:%d, z:%d, w:%d, d:%d, p:%d, t:%c\n", info->minus, info->zero, info->width, info->dot, info->prec, info->type);
-			//check_nbr_len_sign(va_arg(ap, int), info);
-			//printf("nbr len is : %d, nbr sign is : %d\n", info->nbr_len, info->nbr_sign);
+			while (format[i] != '\0' && !(ft_strchr(TYPE, format[i])))
+				check_info(ap, format, info, i++);
+			info->type = format[i++];
 			ret += print_type(ap, info);
+			break;
 		}
-		i++;
 	}
 	free(info);
 	return (ret);
@@ -123,8 +115,7 @@ int					ft_printf(const char *format, ...)
 
 int					main(void)
 {
-	char c = 'a';
-	int ret = ft_printf("%5c\n", c);
-	printf("%d", ret);
+	int ret = ft_printf("%5c", '\0');
+	printf("\n%d", ret);
 	return (0);
 }
