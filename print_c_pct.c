@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_c.c                                          :+:      :+:    :+:   */
+/*   print_c_pct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:15:31 by daelee            #+#    #+#             */
-/*   Updated: 2020/07/05 12:46:47 by daelee           ###   ########.fr       */
+/*   Updated: 2020/07/05 13:13:47 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int         print_c(int c, t_info *info)
+int         print_c_pct(int c, t_info *info)
 {
     int     ret;
 
+    if (info->type == '%')
+        c = '%';
     ret = 0;
     if (info->minus == 1)
         ret += ft_putchar(c); 

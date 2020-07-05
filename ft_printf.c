@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/07/05 12:46:19 by daelee           ###   ########.fr       */
+/*   Updated: 2020/07/05 13:12:25 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 	ret = 0;
 	type = info->type;
-	if (type == 'c')
-		ret = print_c(va_arg(ap, int), info);
+	if (type == 'c' || type == '%')
+		ret = print_c_pct(va_arg(ap, int), info);
 	// else if (type == 's')
 	// 	ret = print_s(ap, info);
 	// else if (type == 'd' || type == 'i')
@@ -115,7 +115,7 @@ int					ft_printf(const char *format, ...)
 
 int					main(void)
 {
-	int ret = ft_printf("%5c", '\0');
+	int ret = ft_printf("%5%");
 	printf("\n%d", ret);
 	return (0);
 }

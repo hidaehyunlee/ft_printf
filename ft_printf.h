@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:51 by daelee            #+#    #+#             */
-/*   Updated: 2020/07/05 12:47:30 by daelee           ###   ########.fr       */
+/*   Updated: 2020/07/05 13:11:08 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include "./libft/libft.h"
 # include <stdio.h>
-# define TYPE "csdiupxX"
+# define TYPE "csdiupxX%"
 
 typedef struct	s_info
 {
@@ -38,7 +38,7 @@ void			check_info(va_list ap, char *format, t_info *info, int i);
 void			check_width_and_prec(va_list ap, char *format, t_info *info, int i);
 
 int				print_type(va_list ap, t_info *info);
-int        		print_c(int c, t_info *info);
+int        		print_c_pct(int c, t_info *info);
 int         	print_width(int width, int len, int zero);
 
 void			init_info(t_info *info);
