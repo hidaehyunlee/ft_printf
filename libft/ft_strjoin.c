@@ -3,30 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daelee <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 21:05:35 by daelee            #+#    #+#             */
-/*   Updated: 2020/04/09 11:02:02 by daelee           ###   ########.fr       */
+/*   Updated: 2020/08/31 22:37:40 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2, int free_target)
 {
-	char	*newstr;
+	char	*result;
+	int		i;
+	int		j;
 	int		s1_len;
 	int		s2_len;
 
-	if (!(s1) && !(s2))
-		return (NULL);
-	else if (!(s1) || !(s2))
-		return (!(s1) ? ft_strdup(s2) : ft_strdup(s1));
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	if (!(newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
-		return (NULL);
-	ft_strlcpy(newstr, s1, s1_len + 1);
-	ft_strlcat(newstr + (s1_len), s2, s2_len + 1);
-	return (newstr);
+	result = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!result)
+		return (0);
+	i = -1;
+	while (++i < s1_len)
+		result[i] = s1[i];
+	if (free_target == 1 || free_target == 3)
+		free(s1);
+	j = 0;
+	while (j < s2_len)
+		result[i++] = s2[j++];
+	if (free_target == 2 || free_target == 3)
+		free(s2);
+	result[i] = 0;
+	return (result);
 }
