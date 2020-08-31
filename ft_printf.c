@@ -116,7 +116,7 @@ int					ft_printf(const char *format, ...)
 int					main(void)
 {
 	int		ret;
-	ret = ft_printf("%*%", 5);
+	ret = ft_printf("%*%", -5);
 	printf("\nreturn : %d  \n", ret);
 	return (0);
 }
