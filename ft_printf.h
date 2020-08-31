@@ -40,7 +40,7 @@ void			check_width_and_prec(va_list ap, char *format, t_info *info, int i);
 int				print_type(va_list ap, t_info *info);
 int        		print_c_pct(int c, t_info *info);
 int         	print_width(int width, int len, int zero);
-int			    print_s(char *str, t_info info);
+//int			    print_s(char *str, t_info info);
 
 
 void			init_info(t_info *info);

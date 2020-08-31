@@ -21,8 +21,8 @@
 	type = info->type;
 	if (type == 'c' || type == '%')
 		ret = print_c_pct(va_arg(ap, int), info);
-	else if (type == 's')
-		ret = print_s(va_arg(ap, char *), info);
+	//else if (type == 's')
+	//	ret = print_s(va_arg(ap, char *), info);
 	// else if (type == 'd' || type == 'i')
 	// 	ret = print_d_i(ap, info);
 	// else if (type == 'x' || type == 'X' || type == 'u')
@@ -115,7 +115,8 @@ int					ft_printf(const char *format, ...)
 
 int					main(void)
 {
-	int ret = ft_printf("%5%");
-	printf("\n%d", ret);
+	int		ret;
+	ret = ft_printf("%*%", 5);
+	printf("\nreturn : %d  \n", ret);
 	return (0);
 }
