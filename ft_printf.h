@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:51 by daelee            #+#    #+#             */
-/*   Updated: 2020/08/31 23:14:15 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/01 16:36:35 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct	s_info
 	int			minus;
 	int			zero;
 	int			width;
-	int			dot;
 	int			prec;
 	char		type;
 	int			nbr_len;

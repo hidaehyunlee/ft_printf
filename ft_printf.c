@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/08/31 23:06:44 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/01 16:36:29 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 	type = info->type;
 	if (type == 'c' || type == '%')
 		ret = print_c_pct(va_arg(ap, int), info);
-	// else if (type == 's')
-	// 	ret = print_s(va_arg(ap, char *), info);
+	else if (type == 's')
+		ret = print_s(va_arg(ap, char *), info);
 	// else if (type == 'd' || type == 'i')
 	// 	ret = print_d_i(ap, info);
 	// else if (type == 'x' || type == 'X' || type == 'u')
@@ -34,12 +34,12 @@
 
 void				check_info(va_list ap, char *format, t_info *info, int i)
 {
-	if (format[i] == '0' && info->dot == 0)
+	if (format[i] == '0' && info->prec == -1)
 		info->zero = 1;
 	else if (format[i] == '-')
 		info->minus = 1;
 	else if (format[i] == '.')
-		info->dot = 1;
+		info->prec = 0;
 	else if (ft_isdigit(format[i]) || format[i] == '*')
 		check_width_and_prec(ap, format, info, i);
 	else if (ft_strchr(TYPE, format[i]))
@@ -52,24 +52,22 @@ void				check_width_and_prec(va_list ap, char *format, t_info *info, int i)
 {
 	if (ft_isdigit(format[i]))
 	{
-		if (info->dot == 1)
-			info->prec = info->prec * 10 + format[i] - 48;
-		else
+		if (info->prec == -1)
 			info->width = info->width * 10 + format[i] - 48;
+		else
+			info->prec = info->prec * 10 + format[i] - 48;
 	}
 	else if (format[i] == '*')
 	{
-		if (info->dot == 1)
-			info->prec = va_arg(ap, int);
-		else {
+		if (info->prec == -1)
 			info->width = va_arg(ap, int);
 			if (info->width < 0)
 			{
 				info->minus = 1;
 				info->width *= -1;
 			}
-		}
-		
+		else
+			info->prec = va_arg(ap, int);
 	}
 }
 
@@ -116,7 +114,7 @@ int					ft_printf(const char *format, ...)
 int					main(void)
 {
 	int		ret;
-	ret = ft_printf("%c", "a");
+	ret = ft_printf("%s", "gongdang love");
 	printf("\nreturn : %d  \n", ret);
 	return (0);
 }

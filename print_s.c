@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 15:26:36 by daelee            #+#    #+#             */
-/*   Updated: 2020/08/31 23:13:08 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/01 16:36:50 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,13 @@ int         print_s(char *str, t_info *info)
 {
     int     ret;
     char    *buf;
-    int     len;
 
     ret = 0;
-    len = ft_strlen(str);
     if (str == NULL)
         str = "(null)";
-    if (info->prec == -1 || info->prec > len)
-        info->prec = len;
-    buf = parse_buf(str, info->prec, len);
+    if (info->prec == -1 || info->prec > ft_strlen(str))
+        info->prec = ft_strlen(str);
+    buf = parse_buf(str, info->prec, ft_strlen(str));
     ret = print_width_str(&buf, info);
     ft_putstr(buf);
     return (ret);
