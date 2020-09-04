@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/04 19:49:51 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/04 23:20:50 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/05 00:04:07 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int					main(void)
 {
 	int		ptr;
 	int		ret;
-	ret = ft_printf("%X", 768955);
+	ret = ft_printf("%*u",7, 12345);
 	printf("\nreturn : %d  \n", ret);
 	return (0);
 }
