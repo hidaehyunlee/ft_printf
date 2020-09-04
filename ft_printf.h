@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:51 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/04 21:36:20 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 22:21:46 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int         	put_width_str(char **buf, t_info *info);
 
 int     		print_nbr(unsigned long long nbr, t_info *info);
 int         	put_prec_str(unsigned long long nbr, t_info *info, char **buf);
+int         	put_minus(int buf_len, t_info *info, char **buf);
+int         	put_pointer_prefix(char **buf);
 
 /*
 *****************************   UTILS FUNCTION   *******************************
@@ -62,5 +64,6 @@ int         	put_prec_str(unsigned long long nbr, t_info *info, char **buf);
 
 void			init_info(t_info *info);
 int				ft_nbrlen(unsigned long long nbr, t_info *info);
+char			*ft_baseset(char type);
 
 #endif

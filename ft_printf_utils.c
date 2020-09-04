@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 20:22:47 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/04 21:40:32 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 22:21:39 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,15 @@ int			ft_nbrlen(unsigned long long nbr, t_info *info)
 		nbr /= info->base_len;
 	}
 	return (i);
+}
+
+char		*ft_baseset(char type)
+{
+	if (type == 'u' || type == 'd' || type == 'i')
+		return ("0123456789");
+	else if (type == 'x' || type == 'p')
+		return ("0123456789abcdef");
+	else if (type == 'X')
+		return ("0123456789ABCDEF");
+	return (0);
 }
