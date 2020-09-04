@@ -12,14 +12,25 @@
 
 #include "ft_printf.h"
 
-// int         print_nbr(unsigned long long nbr, t_info *info)
-// {
-//     int     ret;
-//     char    *buf;
-//     int     buf_len;
+int         put_prec_str(unsigned long long nbr, t_info *info, char **buf)
+{
+    int     buf_len;
+    int     ret;
+    int     i;
 
-//     if ((info->type == 'd' || info->type == 'i') && (int)nbr < 0)
-//     {
-        
-//     }
-// }
+    buf_len = ft_nbrlen(nbr, info);
+}
+
+int         print_nbr(unsigned long long nbr, t_info *info)
+{
+    char    *buf;
+    int     buf_len;
+    int     ret;
+
+    if ((info->type == 'd' || info->type == 'i') && (int)nbr < 0)
+    {
+        info->nbr_sign = -1;
+        nbr = -nbr;
+    }
+    buf_len = put_prec_str(nbr, info, &buf);
+}

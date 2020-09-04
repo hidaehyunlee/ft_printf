@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/04 21:05:38 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 21:12:33 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 		ret = print_char(va_arg(ap, int), info);
 	else if (type == 's')
 		ret = print_string(va_arg(ap, char *), info);
-	// else if (type == 'd' || type == 'i')
-	//  	ret = print_nbr(var_arg(ap, int), info);
-	// else if (type == 'x' || type == 'X' || type == 'u')
-	//  	ret = print_nbr(var_arg(ap, unsigned int), info);
-	//  else if (type == 'p')
-	//  	ret = print_nbr(var_arg(ap, unsigned long long), info);
+	else if (type == 'd' || type == 'i')
+	 	ret = print_nbr(var_arg(ap, int), info);
+	else if (type == 'x' || type == 'X' || type == 'u')
+	 	ret = print_nbr(var_arg(ap, unsigned int), info);
+	 else if (type == 'p')
+	 	ret = print_nbr(var_arg(ap, unsigned long long), info);
 	return (ret);
 }
 
