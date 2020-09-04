@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 20:22:47 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/04 22:21:39 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 23:01:42 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		init_info(t_info *info)
 	info->width = 0;
 	info->prec = -1;
 	info->type = 0;
-	info->nbr_base = 0;
+	info->nbr_base = 10;
 	info->nbr_sign = 1;
 }
 
@@ -34,7 +34,7 @@ int			ft_nbrlen(unsigned long long nbr, t_info *info)
 	while (nbr)
 	{
 		i++;
-		nbr /= info->base_len;
+		nbr /= info->nbr_base;
 	}
 	return (i);
 }

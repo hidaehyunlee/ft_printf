@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:51 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/04 22:21:46 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 23:12:20 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include "./libft/libft.h"
 # include <stdio.h>
+
 # define TYPE "csdiupxX%"
 
 typedef struct	s_info
@@ -57,6 +58,7 @@ int     		print_nbr(unsigned long long nbr, t_info *info);
 int         	put_prec_str(unsigned long long nbr, t_info *info, char **buf);
 int         	put_minus(int buf_len, t_info *info, char **buf);
 int         	put_pointer_prefix(char **buf);
+int         	put_minus2(int buf_len, t_info *info, char **buf);
 
 /*
 *****************************   UTILS FUNCTION   *******************************

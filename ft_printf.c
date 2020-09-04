@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/04 21:12:33 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 23:06:08 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 	else if (type == 's')
 		ret = print_string(va_arg(ap, char *), info);
 	else if (type == 'd' || type == 'i')
-	 	ret = print_nbr(var_arg(ap, int), info);
+	 	ret = print_nbr(va_arg(ap, int), info);
 	else if (type == 'x' || type == 'X' || type == 'u')
-	 	ret = print_nbr(var_arg(ap, unsigned int), info);
+	 	ret = print_nbr(va_arg(ap, unsigned int), info);
 	 else if (type == 'p')
-	 	ret = print_nbr(var_arg(ap, unsigned long long), info);
+	 	ret = print_nbr(va_arg(ap, unsigned long long), info);
 	return (ret);
 }
 
@@ -44,6 +44,10 @@ void				check_info(va_list ap, char *format, t_info *info, int i)
 		check_width_and_prec(ap, format, info, i);
 	else if (ft_strchr(TYPE, format[i]))
 	{
+		if (info->minus == 1 || info->prec > -1)
+			info->zero = 0;
+		if (format[i] == 'x' || format[i] == 'X' || format[i] == 'p')
+			info->nbr_base = 16;
 		info->type = format[i];
 	}
 }
