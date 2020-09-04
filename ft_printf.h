@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:51 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/04 19:48:47 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 20:14:14 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct	s_info
 	int			width;
 	int			prec;
 	char		type;
-	int			nbr_len;
+	int			nbr_base;
 	int			nbr_sign;
 }				t_info;
 
@@ -60,6 +60,5 @@ int     		print_nbr(unsigned long long nbr, t_info *info);
 */
 
 void			init_info(t_info *info);
-int				check_nbr_len_sign(int nbr, t_info *info);
 
 #endif

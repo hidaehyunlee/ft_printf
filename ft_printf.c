@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/04 19:50:59 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 21:05:38 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,14 @@ void				check_width_and_prec(va_list ap, char *format, t_info *info, int i)
 	else if (format[i] == '*')
 	{
 		if (info->prec == -1)
+		{
 			info->width = va_arg(ap, int);
 			if (info->width < 0)
 			{
 				info->minus = 1;
 				info->width *= -1;
 			}
+		}
 		else
 			info->prec = va_arg(ap, int);
 	}
