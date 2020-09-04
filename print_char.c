@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_c_pct.c                                      :+:      :+:    :+:   */
+/*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:15:31 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/01 16:36:47 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 19:46:32 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int         print_c_pct(int c, t_info *info)
+int         print_char(int c, t_info *info)
 {
     int     ret;
 
@@ -21,13 +21,13 @@ int         print_c_pct(int c, t_info *info)
     ret = 0;
     if (info->minus == 1)
         ret += ft_putchar(c); 
-    ret += print_width(info->width, 1, info->zero);
+    ret += put_width(info->width, 1, info->zero);
     if (info->minus == 0)
         ret += ft_putchar(c);
     return (ret);
 }
 
-int         print_width(int width, int len, int zero)
+int         put_width(int width, int len, int zero)
 {
     int     ret;
 

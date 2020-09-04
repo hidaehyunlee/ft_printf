@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/01 16:36:29 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 19:50:59 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@
 	ret = 0;
 	type = info->type;
 	if (type == 'c' || type == '%')
-		ret = print_c_pct(va_arg(ap, int), info);
+		ret = print_char(va_arg(ap, int), info);
 	else if (type == 's')
-		ret = print_s(va_arg(ap, char *), info);
+		ret = print_string(va_arg(ap, char *), info);
 	// else if (type == 'd' || type == 'i')
-	// 	ret = print_d_i(ap, info);
+	//  	ret = print_nbr(var_arg(ap, int), info);
 	// else if (type == 'x' || type == 'X' || type == 'u')
-	// 	ret = print_x_X_u(ap, info);
-	// else if (type == 'p')
-	// 	ret = print_p(ap, info);
+	//  	ret = print_nbr(var_arg(ap, unsigned int), info);
+	//  else if (type == 'p')
+	//  	ret = print_nbr(var_arg(ap, unsigned long long), info);
 	return (ret);
 }
 
@@ -109,12 +109,4 @@ int					ft_printf(const char *format, ...)
 	ret = parse_format(ap, (char *)format);
 	va_end(ap);
 	return (ret);
-}
-
-int					main(void)
-{
-	int		ret;
-	ret = ft_printf("%s", "gongdang love");
-	printf("\nreturn : %d  \n", ret);
-	return (0);
 }

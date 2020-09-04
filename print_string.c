@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_s.c                                          :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 15:26:36 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/01 16:36:50 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 19:48:01 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char        *parse_buf(char *str, int end, int len)
     return (buf);
 }
 
-int         print_width_str(char **buf, t_info *info)
+int         put_width_str(char **buf, t_info *info)
 {
     char    *width;
     char    *temp;
@@ -53,7 +53,7 @@ int         print_width_str(char **buf, t_info *info)
     return (info->width);
 }
 
-int         print_s(char *str, t_info *info)
+int         print_string(char *str, t_info *info)
 {
     int     ret;
     char    *buf;
@@ -64,7 +64,7 @@ int         print_s(char *str, t_info *info)
     if (info->prec == -1 || info->prec > ft_strlen(str))
         info->prec = ft_strlen(str);
     buf = parse_buf(str, info->prec, ft_strlen(str));
-    ret = print_width_str(&buf, info);
+    ret = put_width_str(&buf, info);
     ft_putstr(buf);
     return (ret);
 }

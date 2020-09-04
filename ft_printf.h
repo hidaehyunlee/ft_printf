@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:51 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/01 16:36:35 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/04 19:48:47 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,14 @@ int				print_type(va_list ap, t_info *info);
 *****************************   PRINT FUNCTION   *******************************
 */
 
-int        		print_c_pct(int c, t_info *info);
-int         	print_width(int width, int len, int zero);
-int			    print_s(char *str, t_info *info);
+int        		print_char(int c, t_info *info);
+int         	put_width(int width, int len, int zero);
+
+int			    print_string(char *str, t_info *info);
 char        	*parse_buf(char *str, int end, int len);
-int         	print_width_str(char **buf, t_info *info);
+int         	put_width_str(char **buf, t_info *info);
+
+int     		print_nbr(unsigned long long nbr, t_info *info);
 
 /*
 *****************************   UTILS FUNCTION   *******************************
