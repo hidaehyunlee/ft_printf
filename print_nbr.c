@@ -95,7 +95,7 @@ int         print_nbr(unsigned long long nbr, t_info *info)
     if (info->type == 'p')
         buf_len = put_pointer_prefix(&buf);
     ret = put_width_str(&buf, info);
-    ret = put_minus2(buf_len, info, &buf);
+    ret += put_minus2(buf_len, info, &buf);
     ft_putstr(buf);
     free(buf);
     return (ret);
