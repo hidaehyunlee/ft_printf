@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 20:22:47 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/04 23:41:12 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/06 12:06:37 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void		init_info(t_info *info)
 int			ft_nbrlen(unsigned long long nbr, t_info *info)
 {
 	int		i;
-	int		divider;
 
 	if (nbr == 0 && info->prec != 0)
 		return (1);

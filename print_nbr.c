@@ -18,7 +18,7 @@ int         put_pointer_prefix(char **buf)
     return (ft_strlen(*buf));
 }
 
-int         put_minus(int buf_len, t_info *info, char **buf)
+int         put_minus(t_info *info, char **buf)
 {
     int	len_to_add;
 
@@ -91,7 +91,7 @@ int         print_nbr(unsigned long long nbr, t_info *info)
         nbr = -nbr;
     }
     buf_len = put_prec_str(nbr, info, &buf);
-    buf_len += put_minus(buf_len, info, &buf);
+    buf_len += put_minus(info, &buf);
     if (info->type == 'p')
         buf_len = put_pointer_prefix(&buf);
     ret = put_width_str(&buf, info);

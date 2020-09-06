@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/04 19:49:51 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/06 11:43:59 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/06 12:17:24 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int					main(void)
 {
 	int		ptr;
 	int		ret;
-	ret = ft_printf("%*s", -7, "abcde");
+	ret = ft_printf("%7.3s", NULL);
 	printf("\nreturn : %d  \n", ret);
 	return (0);
 }

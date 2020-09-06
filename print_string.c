@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 15:26:36 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/04 19:48:01 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/06 12:13:43 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,13 @@ char        *parse_buf(char *str, int end, int len)
 int         put_width_str(char **buf, t_info *info)
 {
     char    *width;
-    char    *temp;
     int     i;
 
     if (info->width <= (int)ft_strlen(*buf))
         return ((int)ft_strlen(*buf));
     width = (char *)malloc(sizeof(char) * (info->width - ft_strlen(*buf) + 1));
     i = 0;
-    while (i < info->width - ft_strlen(*buf))
+    while ((size_t)i < info->width - ft_strlen(*buf))
     {
         width[i] = (info->zero == 1) ? '0' : ' ';
         i++;
@@ -61,7 +60,7 @@ int         print_string(char *str, t_info *info)
     ret = 0;
     if (str == NULL)
         str = "(null)";
-    if (info->prec == -1 || info->prec > ft_strlen(str))
+    if (info->prec == -1 || (size_t)info->prec > ft_strlen(str))
         info->prec = ft_strlen(str);
     buf = parse_buf(str, info->prec, ft_strlen(str));
     ret = put_width_str(&buf, info);

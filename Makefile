@@ -6,36 +6,39 @@
 #    By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/29 20:23:48 by daelee            #+#    #+#              #
-#    Updated: 2020/07/02 14:16:36 by daelee           ###   ########.fr        #
+#    Updated: 2020/09/06 12:15:10 by daelee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME		= libftprintf.ar
+LIBFT		= libft
+LIBFT_LIB	= libft.a
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar
-ARFLAGS = rcs
+SRCS		= ./ft_printf.c ./utils.c\
+			  ./print_char.c ./print_nbr.c ./print_string.c
+OBJS		= $(SRCS:.c=.o)
+INCS		= .
+RM			= rm -f
+LIBC		= ar rc
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror
 
-FILES = srcs/
-		libft/
-INCLUDES = includes/
+.c.o :
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I$(INCS)
 
-SRCS = $(addsuffix .c, $(FILES))
-OBJS = $(addsuffix .o, $(FILES))
+$(NAME) : $(OBJS)
+	make all -C $(LIBFT)/
+	cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
+	$(LIBC) $(NAME) $(OBJS)
 
-all: $(NAME)
+all : $(NAME)
 
-.c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $<
+fclean : clean
+	$(RM) $(NAME)
+	make fclean -C $(LIBFT)
 
-$(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+clean :
+	$(RM) $(OBJS)
+	make clean -C $(LIBFT)
 
-clean:
-	rm -rf ${OBJS}
-
-fclean: clean
-	rm -rf ${NAME}
-
-re: fclean all
+re : fclean all
