@@ -6,11 +6,11 @@
 #    By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/29 20:23:48 by daelee            #+#    #+#              #
-#    Updated: 2020/09/06 12:15:10 by daelee           ###   ########.fr        #
+#    Updated: 2020/09/06 12:18:49 by daelee           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libftprintf.ar
+NAME		= libftprintf.a
 LIBFT		= libft
 LIBFT_LIB	= libft.a
 

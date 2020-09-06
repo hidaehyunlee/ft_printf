@@ -1,10 +1,9 @@
 # Files
 main.c
+.gitignore
+.DS_Store
 
 #Folders
-
-
-*.DS_Store
 
 # Prerequisites
 *.d
