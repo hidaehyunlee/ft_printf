@@ -6,13 +6,13 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/06 11:46:28 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/09 21:03:31 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
- int				print_type(va_list ap, t_info *info)
+int					print_type(va_list ap, t_info *info)
 {
 	int				ret;
 	char			type;
@@ -24,7 +24,7 @@
 	else if (type == 's')
 		ret = print_string(va_arg(ap, char *), info);
 	else if (type == 'd' || type == 'i')
-	 	ret = print_nbr(va_arg(ap, int), info);
+		ret = print_nbr(va_arg(ap, int), info);
 	else if (type == 'x' || type == 'X' || type == 'u' || type == 'p')
 	{
 		info->nbr_base = 16;
@@ -35,7 +35,8 @@
 	return (ret);
 }
 
-void				check_width_and_prec(va_list ap, char *format, t_info *info, int i)
+void				check_width_and_prec(va_list ap,
+		char *format, t_info *info, int i)
 {
 	if (ft_isdigit(format[i]))
 	{
@@ -71,7 +72,7 @@ void				check_info(va_list ap, char *format, t_info *info, int i)
 	else if (ft_isdigit(format[i]) || format[i] == '*')
 		check_width_and_prec(ap, format, info, i);
 	if (info->minus == 1 || info->prec > -1)
-				info->zero = 0;
+		info->zero = 0;
 }
 
 int					parse_format(va_list ap, char *format)
@@ -96,7 +97,7 @@ int					parse_format(va_list ap, char *format)
 				check_info(ap, format, info, i++);
 			info->type = format[i++];
 			ret += print_type(ap, info);
-			break;
+			break ;
 		}
 	}
 	free(info);
