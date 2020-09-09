@@ -97,7 +97,6 @@ int					parse_format(va_list ap, char *format)
 				check_info(ap, format, info, i++);
 			info->type = format[i++];
 			ret += print_type(ap, info);
-			break ;
 		}
 	}
 	free(info);
