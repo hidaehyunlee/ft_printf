@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:15:31 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/09 21:35:08 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/09 22:02:08 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int			put_width(int width, int len, int zero)
 {
 	int		ret;
 
+	ret = 0;
 	while (len < width)
 	{
 		if (zero == 1)
