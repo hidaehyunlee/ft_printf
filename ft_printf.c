@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/10 15:54:37 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/10 20:26:21 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,10 @@ int					print_type(va_list ap, t_info *info)
 		ret = print_string(va_arg(ap, char *), info);
 	else if (type == 'd' || type == 'i')
 		ret = print_nbr(va_arg(ap, int), info);
-	else if (type == 'x' || type == 'X' || type == 'u' || type == 'p')
-	{
-		info->nbr_base = 16;
-		if (type == 'u')
-			info->nbr_base = 10;
+	else if (type == 'x' || type == 'X' || type == 'u')
+		ret = print_nbr(va_arg(ap, unsigned int), info);
+	else if (type == 'p')
 		ret = print_nbr(va_arg(ap, unsigned long long), info);
-	}
 	return (ret);
 }
 
@@ -63,7 +60,7 @@ void				check_width_and_prec(va_list ap,
 
 void				check_info(va_list ap, char *format, t_info *info, int i)
 {
-	if (format[i] == '0' && info->prec == -1)
+	if (format[i] == '0' && info->width == 0 && info->prec == -1)
 		info->zero = 1;
 	else if (format[i] == '-')
 		info->minus = 1;
