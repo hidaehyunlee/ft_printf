@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/09 21:03:31 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/10 15:54:37 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ void				check_info(va_list ap, char *format, t_info *info, int i)
 		info->prec = 0;
 	else if (ft_isdigit(format[i]) || format[i] == '*')
 		check_width_and_prec(ap, format, info, i);
-	if (info->minus == 1 || info->prec > -1)
-		info->zero = 0;
 }
 
 int					parse_format(va_list ap, char *format)
@@ -96,6 +94,8 @@ int					parse_format(va_list ap, char *format)
 			while (format[i] != '\0' && !(ft_strchr(TYPE, format[i])))
 				check_info(ap, format, info, i++);
 			info->type = format[i++];
+			if (info->minus == 1 || info->prec > -1)
+				info->zero = 0;
 			ret += print_type(ap, info);
 		}
 	}
