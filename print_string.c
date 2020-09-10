@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/05 15:26:36 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/09 21:39:11 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/10 22:08:42 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int			print_string(char *str, t_info *info)
 	buf = parse_buf(str, info->prec, ft_strlen(str));
 	ret = put_width_str(&buf, info);
 	ft_putstr(buf);
+	free(buf);
 	return (ret);
 }
