@@ -57,3 +57,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+pft_2019/
+pft/
+42TESTERS-PRINTF/

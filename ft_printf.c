@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/10 20:26:21 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/15 11:08:07 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ int					print_type(va_list ap, t_info *info)
 
 	ret = 0;
 	type = info->type;
-	if (type == 'c' || type == '%')
+	if (type == 'c')
 		ret = print_char(va_arg(ap, int), info);
+	else if (type == '%')
+		ret = print_char('%', info);
 	else if (type == 's')
 		ret = print_string(va_arg(ap, char *), info);
 	else if (type == 'd' || type == 'i')

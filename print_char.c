@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:15:31 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/09 22:02:08 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/15 11:17:13 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int			print_char(int c, t_info *info)
 {
 	int		ret;
 
-	if (info->type == '%')
-		c = '%';
 	ret = 0;
 	if (info->minus == 1)
 		ret += ft_putchar(c);
