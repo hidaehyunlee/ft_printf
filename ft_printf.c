@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/15 11:08:07 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/16 11:50:58 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,8 @@ int					parse_format(va_list ap, char *format)
 	{
 		while (format[i] != '%' && format[i] != '\0')
 			ret += ft_putchar(format[i++]);
-		if (format[i] == '%')
+		if (format[i++] == '%')
 		{
-			i++;
 			init_info(info);
 			while (format[i] != '\0' && !(ft_strchr(TYPE, format[i])))
 				check_info(ap, format, info, i++);

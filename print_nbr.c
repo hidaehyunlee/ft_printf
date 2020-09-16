@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/04 18:07:52 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/15 10:21:06 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/16 11:52:43 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int			print_nbr(unsigned long long nbr, t_info *info)
 	char	*buf;
 	int		buf_len;
 	int		ret;
-			
+
 	if (info->type == 'x' || info->type == 'X' || info->type == 'p')
 		info->nbr_base = 16;
 	if ((info->type == 'd' || info->type == 'i') && (int)nbr < 0)
