@@ -6,7 +6,7 @@
 /*   By: daelee <daelee@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 20:23:54 by daelee            #+#    #+#             */
-/*   Updated: 2020/09/16 12:38:40 by daelee           ###   ########.fr       */
+/*   Updated: 2020/09/16 22:24:43 by daelee           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int					parse_format(va_list ap, char *format)
 {
 	int				i;
 	int				ret;
-	static	t_info	*info;
+	t_info			*info;
 
 	i = 0;
 	ret = 0;
@@ -92,7 +92,7 @@ int					parse_format(va_list ap, char *format)
 			while (format[++i] != '\0' && !(ft_strchr(TYPE, format[i])))
 				check_info(ap, format, info, i);
 			info->type = format[i++];
-			if (info->minus == 1 || info->prec > -1)
+			if ((info->minus == 1 || info->prec > -1) && info->type != '%')
 				info->zero = 0;
 			ret += print_type(ap, info);
 		}
