@@ -48,3 +48,13 @@ Write a library that contains ft_printf, a function that will mimic the real pri
 - 다음과 같은 conversions를 관리 할 것입니다 : `cspdiuxX%`
 - 모든 conversions에서 ‘`-0.*`’ 플래그와 minimum field width의 조합을 관리 할 것입니다.
 - 원래의 printf 함수와 비교될 것입니다.
+
+</br>
+
+## 3. 선행지식
+
+- [가변인자](https://velog.io/@hidaehyunlee/가변인자-Variadic-Arguments)
+- [형식태그와 서식지정자](https://velog.io/@hidaehyunlee/형식태그와-서식지정자-printf-함수의-옵션을-알아보자)
+- [외부 라이브러리 컴파일](https://velog.io/@hidaehyunlee/외부-라이브러리-GCC로-컴파일-하기)
+
+
